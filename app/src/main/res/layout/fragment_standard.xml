@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.StandardFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:letterSpacing="0.1"
+            android:paddingHorizontal="10dp"
+            android:maxLines="1"
+            android:paddingTop="10dp"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/battleship_grey"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/text_view_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/black"
+            android:textSize="60sp" />
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="1"
+        android:rowCount="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/x2_button"
+                style="@style/StandardButtonTheme"
+                android:letterSpacing="0.2"
+                android:text="@string/x2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/clear_button"
+                style="@style/StandardButtonTheme"
+                android:text="@string/clear" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/backspace_button"
+                style="@style/StandardButtonTheme"
+                android:text="@string/backspace" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/division_button"
+                style="@style/StandardButtonTheme"
+                android:text="@string/division" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_7"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_seven" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_8"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_eight" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_9"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_nine" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/multiplication_button"
+                style="@style/StandardButtonTheme"
+                android:text="@string/multiplication" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_4"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_four" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_5"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_five" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_6"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_six" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/subtraction_button"
+                style="@style/StandardButtonTheme"
+                android:text="@string/subtraction" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_1"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_one" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_2"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_two" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_3"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_three" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addition_button"
+                style="@style/StandardButtonTheme"
+                android:text="@string/addition" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/plusminus_button"
+                style="@style/StandardButtonTheme"
+                android:text="@string/plus_minus" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_0"
+                style="@style/StandardButtonTheme"
+                android:text="@string/number_zero" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dot_button"
+                style="@style/StandardButtonTheme"
+                android:text="@string/dot" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/equals_button"
+                style="@style/StandardButtonTheme"
+                android:background="@color/elephant"
+                android:text="@string/equals" />
+        </LinearLayout>
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/standard_item"
+            android:checkable="true"
+            android:icon="@drawable/standard_icon"
+            android:title="@string/standard" />
+        <item
+            android:id="@+id/scientific_item"
+            android:checkable="true"
+            android:icon="@drawable/scientific_icon"
+            android:title="@string/scientific" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/setting_item"
+            android:checkable="true"
+            android:icon="@drawable/settings_icon"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/help_item"
+            android:checkable="true"
+            android:icon="@drawable/help_icon"
+            android:title="@string/help" />
+    </group>
+</menu>
