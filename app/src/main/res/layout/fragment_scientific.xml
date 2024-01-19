@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragments.ScientificFragment">
 
@@ -20,13 +20,13 @@
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
             android:fontFamily="@font/montserrat"
             android:letterSpacing="0.1"
+            android:maxLines="1"
             android:paddingHorizontal="10dp"
             android:paddingTop="10dp"
             android:textAlignment="viewEnd"
-            android:maxLines="1"
-            android:ellipsize="end"
             android:textColor="@color/battleship_grey"
             android:textSize="30sp" />
 
@@ -34,11 +34,11 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
             android:fontFamily="@font/montserrat"
             android:letterSpacing="0.1"
-            android:padding="10dp"
             android:maxLines="1"
-            android:ellipsize="end"
+            android:padding="10dp"
             android:textAlignment="viewEnd"
             android:textColor="@color/black"
             android:textSize="60sp" />
@@ -61,27 +61,29 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/x1Button"
+                style="@style/ButtonTheme"
+                android:letterSpacing="0.2"
+                android:text="@string/x1" />
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/x10Button"
                 style="@style/ButtonTheme"
+                android:letterSpacing="0.2"
                 android:text="@string/x10" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/log10Button"
+                android:id="@+id/sinButton"
                 style="@style/ButtonTheme"
-                android:text="log10" />
+                android:text="@string/sin" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/sin1Button"
+                android:id="@+id/cosButton"
                 style="@style/ButtonTheme"
-                android:text="@string/sin1" />
+                android:text="@string/cos" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/cos1Button"
-                style="@style/ButtonTheme"
-                android:text="@string/cos1" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/tan1Button"
+                android:id="@+id/tanButton"
                 style="@style/ButtonTheme"
                 android:text="@string/tan" />
         </LinearLayout>
@@ -92,46 +94,17 @@
             android:layout_columnWeight="1"
             android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/x1Button"
-                style="@style/ButtonTheme"
-                android:text="1/x" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/x1yButton"
+                android:id="@+id/exButton4"
                 style="@style/ButtonTheme"
-                android:text="@string/x1y" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/sinButton"
-                style="@style/ButtonTheme"
-                android:text="sin" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/cosButton"
-                style="@style/ButtonTheme"
-                android:text="cos" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/tanButton"
-                style="@style/ButtonTheme"
-                android:text="tan" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/lnButton"
-                style="@style/ButtonTheme"
-                android:text="in" />
+                android:letterSpacing="0.2"
+                android:text="@string/ex" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/backspaceButton"
                 style="@style/ButtonTheme"
+                android:letterSpacing="0.2"
                 android:text="@string/x2" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -156,23 +129,16 @@
             android:layout_columnWeight="1"
             android:orientation="horizontal">
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:orientation="horizontal">
-
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/exButton4"
+                android:id="@+id/log10Button"
                 style="@style/ButtonTheme"
-                android:text="@string/ex" />
+                android:text="@string/log" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button7"
                 style="@style/ButtonTheme"
-                android:text="@string/number_seven" />
+                android:text="@string/number_seven"
+                android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button8"
@@ -197,9 +163,9 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/xyButton"
+                android:id="@+id/lnButton"
                 style="@style/ButtonTheme"
-                android:text="@string/xy" />
+                android:text="@string/in" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button4"
@@ -230,9 +196,9 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/decButton"
+                android:id="@+id/binButton"
                 style="@style/ButtonTheme"
-                android:text="dec" />
+                android:text="@string/bin" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button1"
@@ -262,9 +228,10 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/binButton"
+                android:id="@+id/decButton"
                 style="@style/ButtonTheme"
-                android:text="bin" />
+                android:text="@string/dec" />
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/plusminusButton"

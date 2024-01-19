@@ -34,13 +34,9 @@
     <string name="subtraction">-</string>
 
     <string name="x2">x<sup><small>2</small></sup></string>
-    <string name="xy">x<sup><small>y</small></sup></string>
     <string name="ex">e<sup><small>x</small></sup></string>
-    <string name="x1y">x<sup><small>1/y</small></sup></string>
     <string name="x10">10<sup><small>x</small></sup></string>
-    <string name="sin1">sin<sup><small>-1</small></sup></string>
-    <string name="cos1">cos<sup><small>-1</small></sup></string>
-    <string name="tan">tan<sup><small>-1</small></sup></string>
+    <string name="x1"><sup><small>1</small></sup>/x</string>
 
     <string name="plus_minus">±</string>
     <string name="dot">.</string>
@@ -49,4 +45,15 @@
     <string name="backspace">⌫</string>
 
     <string name="equals">=</string>
+
+    <string name="error">ERROR</string>
+
+    <string name="square_number">sqr(0)</string>
+    <string name="cos">cos</string>
+    <string name="tan">tan</string>
+    <string name="sin">sin</string>
+    <string name="log">log</string>
+    <string name="in">in</string>
+    <string name="bin">bin</string>
+    <string name="dec">dec</string>
 </resources>

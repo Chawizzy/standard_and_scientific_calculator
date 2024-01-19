@@ -8,6 +8,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="10dp"
         android:layout_margin="16dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,6 +24,7 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/material_switch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dark_theme"

@@ -1,18 +1,19 @@
 package com.example.calculator;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.calculator.fragments.HelpFragment;
 import com.example.calculator.fragments.ScientificFragment;
 import com.example.calculator.fragments.SettingsFragment;
 import com.example.calculator.fragments.StandardFragment;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applySavedTheme();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -56,8 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             openFragment(new ScientificFragment());
         } else if (itemID == R.id.setting_item) {
             openFragment(new SettingsFragment());
-        } else if (itemID == R.id.help_item) {
-            openFragment(new HelpFragment());
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -81,5 +82,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void applySavedTheme() {
+        SharedPreferences preferences = getSharedPreferences(SettingsFragment.PREF_THEME, MODE_PRIVATE);
+        int savedTheme = preferences.getInt(SettingsFragment.KEY_THEME, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+        // Apply the saved theme
+        AppCompatDelegate.setDefaultNightMode(savedTheme);
     }
 }

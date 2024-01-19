@@ -8,11 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.calculator.R;
+
+import java.util.Locale;
 
 public class StandardFragment extends Fragment {
     private TextView textView1;
@@ -29,70 +32,22 @@ public class StandardFragment extends Fragment {
     private AppCompatButton button8;
     private AppCompatButton button9;
 
-    private Button clearButton, backspaceButton, dotButton, plusMinusButton, equalsButton;
-    private Button x2Button, additionButton, subtractionButton, multiplicationButton, divisionButton;
+    private Button clearButton;
+    private Button backspaceButton;
 
+    private Button dotButton;
+    private Button plusMinusButton;
 
-    private double answer = 0;
-    private double number = 0;
-    private int option;
+    private Button equalsButton;
 
-    public void operation() {
-        switch (option) {
-            case 1:
-                answer = number + Double.parseDouble(String.valueOf(textView2.getText()));
+    private Button x2Button;
+    private Button divisionButton;
+    private Button additionButton;
+    private Button subtractionButton;
+    private Button multiplicationButton;
 
-                if (answer % 1 == 0) {
-                    int answerAsInt = (int) answer;
-                    textView2.setText(Integer.toString(answerAsInt));
-                } else {
-                    textView2.setText(Double.toString(Math.round(answer * 10000d) / 10000d));
-                }
-                break;
-            case 2:
-                answer = number - Double.parseDouble(String.valueOf(textView2.getText()));
-
-                if (answer % 1 == 0) {
-                    int answerAsInt = (int) answer;
-                    textView2.setText(Integer.toString(answerAsInt));
-                } else {
-                    textView2.setText(Double.toString(Math.round(answer * 10000d) / 10000d));
-                }
-                break;
-            case 3:
-                answer = number * Double.parseDouble(String.valueOf(textView2.getText()));
-
-                if (answer % 1 == 0) {
-                    int answerAsInt = (int) answer;
-                    textView2.setText(Integer.toString(answerAsInt));
-                } else {
-                    textView2.setText(Double.toString(Math.round(answer * 10000d) / 10000d));
-                }
-                break;
-            case 4:
-                answer = number / Double.parseDouble(String.valueOf(textView2.getText()));
-
-                if (answer % 1 == 0) {
-                    int answerAsInt = (int) answer;
-                    textView2.setText(Integer.toString(answerAsInt));
-                } else {
-
-                    textView2.setText(Double.toString(Math.round(answer * 10000d) / 10000d));
-                }
-                break;
-            case 5:
-                answer = Math.pow(number, 2);
-
-                if (answer % 1 == 0) {
-                    int answerAsInt = (int) answer;
-                    textView2.setText(Integer.toString(answerAsInt));
-                } else {
-                    textView2.setText(Double.toString(Math.round(answer * 10000d) / 10000d));
-                }
-                break;
-        }
-    }
-
+    private double firstNumber = 0;
+    private int option = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -121,6 +76,7 @@ public class StandardFragment extends Fragment {
         multiplicationButton = view.findViewById(R.id.multiplication_button);
         divisionButton = view.findViewById(R.id.division_button);
         x2Button = view.findViewById(R.id.x2_button);
+
         equalsButton = view.findViewById(R.id.equals_button);
 
         inIt();
@@ -199,15 +155,12 @@ public class StandardFragment extends Fragment {
             }
         });
 
-
         dotButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 textView2.append(".");
             }
         });
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
 
         plusMinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,28 +169,26 @@ public class StandardFragment extends Fragment {
 
                 if (!TextUtils.isEmpty(currentText)) {
                     try {
-                        double currentNumber = Double.parseDouble(currentText);
+                        double currentDoubleNumber = Double.parseDouble(currentText);
 
-                        if (currentNumber % 1 == 0) {
-                            int integerValue = (int) currentNumber;
+                        if (currentDoubleNumber % 1 == 0) {
+                            int integerValue = (int) currentDoubleNumber;
                             int newValue = -integerValue;
 
                             textView2.setText(String.valueOf(newValue));
                         } else {
-                            double newValue = -currentNumber;
+                            double newValue = -currentDoubleNumber;
 
                             textView2.setText(String.valueOf(newValue));
                         }
 
                         adjustTextSize();
                     } catch (NumberFormatException e) {
-                        textView2.setText("Error");
+                        textView2.setText(R.string.error);
                     }
                 }
             }
         });
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
 
         additionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,16 +196,17 @@ public class StandardFragment extends Fragment {
                 String currentText = textView2.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(currentText)) {
-                    number = Double.parseDouble(currentText);
-                    option = 1;
+                    firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
+                    option = 1;
 
-                    if (number % 1 == 0) {
-                        int numberAsInt = (int) number;
 
-                        textView1.setText(Integer.toString(numberAsInt) + " + ");
+                    if (firstNumber % 1 == 0) {
+                        int newIntegerValue = (int) firstNumber;
+
+                        textView1.setText(String.format(Locale.getDefault(), "%d" + " +", newIntegerValue));
                     } else {
-                        textView1.setText(Double.toString(number) + " + ");
+                        textView1.setText(String.format(Locale.getDefault(), "%.2f" + " +", firstNumber));
                     }
                 } else {
                     textView1.setText("0 +");
@@ -268,15 +220,16 @@ public class StandardFragment extends Fragment {
                 String currentText = textView2.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(currentText)) {
-                    number = Double.parseDouble(currentText);
-                    option = 2;
+                    firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
+                    option = 2;
 
-                    if (number % 1 == 0) {
-                        int numberAsInt = (int) number;
-                        textView1.setText(Integer.toString(numberAsInt) + " - ");
+                    if (firstNumber % 1 == 0) {
+                        int newIntegerValue = (int) firstNumber;
+
+                        textView1.setText(String.format(Locale.getDefault(), "%d" + " -", newIntegerValue));
                     } else {
-                        textView1.setText(Double.toString(number) + " - ");
+                        textView1.setText(String.format(Locale.getDefault(), "%.2f" + " -", firstNumber));
                     }
                 } else {
                     textView1.setText("0 -");
@@ -290,15 +243,16 @@ public class StandardFragment extends Fragment {
                 String currentText = textView2.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(currentText)) {
-                    number = Double.parseDouble(currentText);
-                    option = 3;
+                    firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
+                    option = 3;
 
-                    if (number % 1 == 0) {
-                        int numberAsInt = (int) number;
-                        textView1.setText(Integer.toString(numberAsInt) + " × ");
+                    if (firstNumber % 1 == 0) {
+                        int newIntegerValue = (int) firstNumber;
+
+                        textView1.setText(String.format(Locale.getDefault(), "%d" + " ×", newIntegerValue));
                     } else {
-                        textView1.setText(Double.toString(number) + " × ");
+                        textView1.setText(String.format(Locale.getDefault(), "%.2f" + " ×", firstNumber));
                     }
                 } else {
                     textView1.setText("0 ×");
@@ -312,15 +266,16 @@ public class StandardFragment extends Fragment {
                 String currentText = textView2.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(currentText)) {
-                    number = Double.parseDouble(currentText);
-                    option = 4;
+                    firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
+                    option = 4;
 
-                    if (number % 1 == 0) {
-                        int numberAsInt = (int) number;
-                        textView1.setText(Integer.toString(numberAsInt) + " ÷ ");
+                    if (firstNumber % 1 == 0) {
+                        int newIntegerValue = (int) firstNumber;
+
+                        textView1.setText(String.format(Locale.getDefault(), "%d" + " ÷", newIntegerValue));
                     } else {
-                        textView1.setText(Double.toString(number) + " ÷ ");
+                        textView1.setText(String.format(Locale.getDefault(), "%.2f" + " ÷", firstNumber));
                     }
                 } else {
                     textView1.setText("0 ÷");
@@ -328,42 +283,30 @@ public class StandardFragment extends Fragment {
             }
         });
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
         x2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String text = String.valueOf(textView2.getText());
+                String currentText = textView2.getText().toString().trim();
 
-                if (text != "") {
-                    number = Double.parseDouble(text);
-                    option = 5;
+                if (!TextUtils.isEmpty(currentText)) {
+                    firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
+                    option = 5;
 
-                    if (number % 1 == 0) {
-                        int numberAsInt = (int) number;
-                        textView1.setText(Integer.toString(numberAsInt) + "^2");
+                    if (firstNumber % 1 == 0) {
+                        int newIntegerValue = (int) firstNumber;
+
+                        textView1.setText(String.format(Locale.getDefault(), "sqr(" + "%d" + ")", newIntegerValue));
                     } else {
-                        textView1.setText(Double.toString(number) + "^2");
+                        textView1.setText(String.format(Locale.getDefault(), "sqr(" + "%.2f" + ")", firstNumber));
                     }
+
+                    Toast.makeText(getContext(), "On Click Listener", Toast.LENGTH_LONG).show();
                 } else {
-                    textView1.setText("0^2");
+                    textView1.setText(R.string.square_number);
                 }
             }
         });
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-        equalsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                operation();
-                textView1.setText("");
-                number = 0;
-                answer = 0;
-            }
-        });
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
 
         backspaceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -377,7 +320,6 @@ public class StandardFragment extends Fragment {
             }
         });
 
-
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -386,6 +328,19 @@ public class StandardFragment extends Fragment {
             }
         });
 
+        equalsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Equals", Toast.LENGTH_LONG).show();
+
+                operation();
+
+
+                textView1.setText("");
+
+
+            }
+        });
     }
 
     private void appendNumber(String number) {
@@ -394,14 +349,55 @@ public class StandardFragment extends Fragment {
         adjustTextSize();
     }
 
-    private void adjustTextSize() {
-        int maxLength = 8;
-        int defaultTextSize = 60;
+    private void operation() {
+        double secondNumber = 0;
+        double answer = 0;
 
+        if(option < 5 && option > 0) {
+            secondNumber = Double.parseDouble(String.valueOf(textView2.getText()).trim());
+        }
+
+        switch (option) {
+            case 1:
+                answer = firstNumber + secondNumber;
+                break;
+            case 2:
+                answer = firstNumber - secondNumber;
+                break;
+            case 3:
+                answer = firstNumber * secondNumber;
+                break;
+            case 4:
+                answer = firstNumber / secondNumber;
+                break;
+            case 5:
+                answer = Math.pow(firstNumber, 2);
+                break;
+        }
+
+        displayAnswer(answer);
+    }
+
+    private void displayAnswer(double answer) {
+        if (answer % 1 == 0) {
+            int newIntegerValue = (int) answer;
+
+            textView2.setText(String.format(Locale.getDefault(), "%d", newIntegerValue));
+        } else {
+            textView2.setText(String.format(Locale.getDefault(), "%.2f", answer));
+        }
+
+        adjustTextSize();
+    }
+
+    private void adjustTextSize() {
         int length = textView2.getText().toString().trim().length();
+        int defaultTextSize = 60;
+        int maxLength = 8;
 
         if (length > maxLength) {
             float newTextSize = defaultTextSize * (float) maxLength / length;
+
             textView2.setTextSize(TypedValue.COMPLEX_UNIT_SP, newTextSize);
         } else {
             textView2.setTextSize(TypedValue.COMPLEX_UNIT_SP, defaultTextSize);
