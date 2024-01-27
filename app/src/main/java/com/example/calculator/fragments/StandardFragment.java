@@ -88,70 +88,70 @@ public class StandardFragment extends Fragment {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("0");
+                appendValue("0");
             }
         });
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("1");
+                appendValue("1");
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("2");
+                appendValue("2");
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("3");
+                appendValue("3");
             }
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("4");
+                appendValue("4");
             }
         });
 
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("5");
+                appendValue("5");
             }
         });
 
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("6");
+                appendValue("6");
             }
         });
 
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("7");
+                appendValue("7");
             }
         });
 
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("8");
+                appendValue("8");
             }
         });
 
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("9");
+                appendValue("9");
             }
         });
 
@@ -199,7 +199,6 @@ public class StandardFragment extends Fragment {
                     firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
                     option = 1;
-
 
                     if (firstNumber % 1 == 0) {
                         int newIntegerValue = (int) firstNumber;
@@ -331,29 +330,17 @@ public class StandardFragment extends Fragment {
         equalsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Equals", Toast.LENGTH_LONG).show();
-
                 operation();
-
-
                 textView1.setText("");
-
-
             }
         });
-    }
-
-    private void appendNumber(String number) {
-        textView2.append(number);
-
-        adjustTextSize();
     }
 
     private void operation() {
         double secondNumber = 0;
         double answer = 0;
 
-        if(option < 5 && option > 0) {
+        if (option < 5 && option > 0) {
             secondNumber = Double.parseDouble(String.valueOf(textView2.getText()).trim());
         }
 
@@ -376,6 +363,11 @@ public class StandardFragment extends Fragment {
         }
 
         displayAnswer(answer);
+    }
+
+    private void appendValue(String value) {
+        textView2.append(value);
+        adjustTextSize();
     }
 
     private void displayAnswer(double answer) {

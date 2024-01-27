@@ -1,9 +1,14 @@
 <resources>
-    <style name="Base.Theme.Calculator" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/elephant</item>
-    </style>
+    <style name="Base.Theme.Calculator" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/azure</item>
+        <item name="colorPrimaryDark">@color/mariner</item>
+        <item name="colorAccent">@color/french_rose</item>
 
-    <style name="Theme.Calculator" parent="Base.Theme.Calculator" />
+        <item name="displayTextColorTwo">@color/black</item>
+        <item name="android:windowBackground">@color/light_background_color</item>
+
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+    </style>
 
     <style name="StandardButtonTheme">
         <item name="textAllCaps">false</item>
@@ -17,7 +22,7 @@
         <item name="android:background">@color/dark_blue_grey</item>
     </style>
 
-    <style name="ButtonTheme">
+    <style name="ScientificButtonTheme">
         <item name="textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_weight">1</item>
@@ -27,5 +32,11 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:background">@color/dark_blue_grey</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Theme.AppCompat">
+        <item name="android:background">@color/azure</item>
+        <item name="toolbarTitleTextColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
     </style>
 </resources>

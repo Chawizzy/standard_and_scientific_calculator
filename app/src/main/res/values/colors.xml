@@ -5,6 +5,14 @@
     <color name="dark_blue_grey">#1D3849</color>
     <color name="elephant">#142F44</color>
     <color name="battleship_grey">#838383</color>
+    <color name="azure">#2196F3</color>
+    <color name="mariner">#1976D2</color>
+    <color name="french_rose">#FF4081</color>
+    <color name="blue_eyes">#1565C0</color>
 
+    <!-- Light Mode -->
+    <color name="light_background_color">#FFFFFF</color>
 
+    <!-- Dark Mode -->
+    <color name="dark_background_color">#121212</color>
 </resources>

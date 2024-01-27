@@ -21,8 +21,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:letterSpacing="0.1"
-            android:paddingHorizontal="10dp"
             android:maxLines="1"
+            android:paddingHorizontal="10dp"
             android:paddingTop="10dp"
             android:textAlignment="viewEnd"
             android:textColor="@color/battleship_grey"
@@ -36,7 +36,7 @@
             android:maxLines="1"
             android:padding="10dp"
             android:textAlignment="viewEnd"
-            android:textColor="@color/black"
+            android:textColor="?attr/displayTextColorTwo"
             android:textSize="60sp" />
     </LinearLayout>
 

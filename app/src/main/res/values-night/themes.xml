@@ -1,5 +1,42 @@
 <resources>
-    <style name="Base.Theme.Calculator" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/dark_blue_grey</item>
+    <style name="Base.Theme.Calculator" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorAccent">@color/mariner</item>
+        <item name="colorPrimary">@color/mariner</item>
+        <item name="colorPrimaryDark">@color/blue_eyes</item>
+
+        <item name="displayTextColorTwo">@android:color/white</item>
+        <item name="android:windowBackground">@color/dark_background_color</item>
+
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+    </style>
+
+    <style name="StandardButtonTheme">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:background">@color/dark_blue_grey</item>
+    </style>
+
+    <style name="ScientificButtonTheme">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:background">@color/dark_blue_grey</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Theme.AppCompat">
+        <item name="android:background">@color/mariner</item>
+        <item name="toolbarTitleTextColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
     </style>
 </resources>

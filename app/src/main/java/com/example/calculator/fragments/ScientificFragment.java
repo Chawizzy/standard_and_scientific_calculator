@@ -32,14 +32,33 @@ public class ScientificFragment extends Fragment {
     private AppCompatButton button8;
     private AppCompatButton button9;
 
-    private Button clearButton, backspaceButton, dotButton, plusMinusButton, equalsButton;
-    private Button log10Button, x10Button, sinButton, cosButton, tanButton, x1Button, lnButton, exButton, decButton, binButton;
-    private Button x2Button, additionButton, subtractionButton, multiplicationButton, divisionButton;
+    private Button divisionButton;
+    private Button additionButton;
+    private Button subtractionButton;
+    private Button multiplicationButton;
+
+    private Button x2Button;
+    private Button x1Button;
+    private Button lnButton;
+    private Button exButton;
+    private Button decButton;
+    private Button binButton;
+    private Button x10Button;
+    private Button sinButton;
+    private Button cosButton;
+    private Button tanButton;
+    private Button log10Button;
+
+    private Button clearButton;
+    private Button backspaceButton;
+
+    private Button dotButton;
+    private Button plusMinusButton;
+
+    private Button equalsButton;
 
     private double firstNumber = 0;
-    private int number2;
-    private int option;
-
+    private int option = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,70 +108,70 @@ public class ScientificFragment extends Fragment {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("0");
+                appendValue("0");
             }
         });
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("1");
+                appendValue("1");
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("2");
+                appendValue("2");
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("3");
+                appendValue("3");
             }
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("4");
+                appendValue("4");
             }
         });
 
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("5");
+                appendValue("5");
             }
         });
 
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("6");
+                appendValue("6");
             }
         });
 
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("7");
+                appendValue("7");
             }
         });
 
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("8");
+                appendValue("8");
             }
         });
 
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appendNumber("9");
+                appendValue("9");
             }
         });
 
@@ -200,7 +219,6 @@ public class ScientificFragment extends Fragment {
                     firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
                     option = 1;
-
 
                     if (firstNumber % 1 == 0) {
                         int newIntegerValue = (int) firstNumber;
@@ -327,7 +345,7 @@ public class ScientificFragment extends Fragment {
                         textView1.setText(String.format(Locale.getDefault(), "10^" + "%.2f", firstNumber));
                     }
                 } else {
-                    textView1.setText("10^0");
+                    textView1.setText(R.string._10_0);
                 }
             }
         });
@@ -373,7 +391,7 @@ public class ScientificFragment extends Fragment {
                         textView1.setText(String.format(Locale.getDefault(), "log10(" + "%.2f" + ")", firstNumber));
                     }
                 } else {
-                    textView1.setText("log10(0)");
+                    textView1.setText(R.string.log10_0);
                 }
             }
         });
@@ -386,7 +404,7 @@ public class ScientificFragment extends Fragment {
                 if (!TextUtils.isEmpty(currentText)) {
                     firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
-                    option = 10;
+                    option = 9;
 
                     if (firstNumber % 1 == 0) {
                         int numberAsInt = (int) firstNumber;
@@ -396,7 +414,7 @@ public class ScientificFragment extends Fragment {
                         textView1.setText(String.format(Locale.getDefault(), "sin(" + "%.2f" + ")", firstNumber));
                     }
                 } else {
-                    textView1.setText("sin(0)");
+                    textView1.setText(R.string.sin_0);
                 }
             }
         });
@@ -409,7 +427,7 @@ public class ScientificFragment extends Fragment {
                 if (!TextUtils.isEmpty(currentText)) {
                     firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
-                    option = 11;
+                    option = 10;
 
                     if (firstNumber % 1 == 0) {
                         int newIntegerValue = (int) firstNumber;
@@ -419,7 +437,7 @@ public class ScientificFragment extends Fragment {
                         textView1.setText(String.format(Locale.getDefault(), "cos(" + "%.2f" + ")", firstNumber));
                     }
                 } else {
-                    textView1.setText("cos(0)");
+                    textView1.setText(R.string.cos_0);
                 }
             }
         });
@@ -432,7 +450,7 @@ public class ScientificFragment extends Fragment {
                 if (!TextUtils.isEmpty(currentText)) {
                     firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
-                    option = 12;
+                    option = 11;
 
                     if (firstNumber % 1 == 0) {
                         int newIntegerValue = (int) firstNumber;
@@ -442,7 +460,7 @@ public class ScientificFragment extends Fragment {
                         textView1.setText(String.format(Locale.getDefault(), "tan(" + "%.2f" + ")", firstNumber));
                     }
                 } else {
-                    textView1.setText("tan(0)");
+                    textView1.setText(R.string.tan_0);
                 }
             }
         });
@@ -455,7 +473,7 @@ public class ScientificFragment extends Fragment {
                 if (!TextUtils.isEmpty(currentText)) {
                     firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
-                    option = 16;
+                    option = 12;
 
                     if (firstNumber % 1 == 0) {
                         int newIntegerValue = (int) firstNumber;
@@ -465,7 +483,7 @@ public class ScientificFragment extends Fragment {
                         textView1.setText(String.format(Locale.getDefault(), "in(" + "%.2f" + ")", firstNumber));
                     }
                 } else {
-                    textView1.setText("ln(0)");
+                    textView1.setText(R.string.ln_0);
                 }
             }
         });
@@ -478,7 +496,7 @@ public class ScientificFragment extends Fragment {
                 if (!TextUtils.isEmpty(currentText)) {
                     firstNumber = Double.parseDouble(currentText);
                     textView2.setText("");
-                    option = 17;
+                    option = 13;
 
                     if (firstNumber % 1 == 0) {
                         int newIntegerValue = (int) firstNumber;
@@ -508,7 +526,7 @@ public class ScientificFragment extends Fragment {
 
                         textView1.setText(String.format(Locale.getDefault(), "%d", newIntegerValue));
                     } else {
-                        textView2.setText("Error");
+                        textView2.setText(R.string.error);
                     }
 
                 } else {
@@ -532,20 +550,12 @@ public class ScientificFragment extends Fragment {
 
                         textView1.setText(String.format(Locale.getDefault(), "%d", newIntegerValue));
                     } else {
-                        textView2.setText("Error");
+                        textView2.setText(R.string.error);
                     }
 
                 } else {
                     textView1.setText("0");
                 }
-            }
-        });
-
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView1.setText("");
-                textView2.setText("");
             }
         });
 
@@ -561,6 +571,14 @@ public class ScientificFragment extends Fragment {
             }
         });
 
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView1.setText("");
+                textView2.setText("");
+            }
+        });
+
         equalsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -568,12 +586,6 @@ public class ScientificFragment extends Fragment {
                 textView1.setText("");
             }
         });
-    }
-
-    private void appendNumber(String number) {
-        textView2.append(number);
-
-        adjustTextSize();
     }
 
     public void operation() {
@@ -588,92 +600,74 @@ public class ScientificFragment extends Fragment {
             case 1:
                 answer = firstNumber + secondNumber;
                 break;
+
             case 2:
                 answer = firstNumber - secondNumber;
                 break;
+
             case 3:
                 answer = firstNumber * secondNumber;
                 break;
+
             case 4:
                 answer = firstNumber / secondNumber;
                 break;
+
             case 5:
                 answer = Math.pow(firstNumber, 2);
                 break;
+
             case 6:
                 answer = Math.pow(10, firstNumber);
                 break;
+
             case 7:
                 answer = 1 / firstNumber;
                 break;
+
             case 8:
                 answer = Math.log10(firstNumber);
                 break;
-            case 9:
-                answer = Math.pow(firstNumber, (1 / secondNumber));
-                break;
 
-            case 10:
+            case 9:
                 answer = Math.sin(Math.toRadians(firstNumber));
                 break;
 
-            case 11:
+            case 10:
                 answer = Math.cos(Math.toRadians(firstNumber));
                 break;
 
-            case 12:
+            case 11:
                 answer = Math.tan(Math.toRadians(firstNumber));
                 break;
 
-            case 13:
-                answer = Math.asin(Math.toRadians(firstNumber));
-                break;
-
-            case 14:
-                answer = Math.acos(Math.toRadians(firstNumber));
-                break;
-
-            case 15:
-                answer = Math.atan(Math.toRadians(firstNumber));
-                break;
-
-            case 16:
+            case 12:
                 answer = Math.log(firstNumber);
                 break;
 
-            case 17:
+            case 13:
                 answer = Math.exp(firstNumber);
                 break;
 
-            case 18:
-                answer = Math.pow(firstNumber, secondNumber);
-                break;
-
             case 19:
-                int answer2 = Integer.parseInt(String.valueOf(number2), 2);
+                int binaryResult = Integer.parseInt(String.valueOf((int) firstNumber), 2);;
 
-                textView2.setText(Integer.toString(answer2));
-
+                answer = (double) binaryResult;
                 break;
 
             case 20:
-                int count = 0;
-                int[] binary = new int[100];
+                String decimalResult = Integer.toBinaryString((int) firstNumber);
 
-                while (number2 != 0) {
-                    binary[count] = number2 % 2;
-                    number2 = number2 / 2;
-                    count++;
-                }
-
-                for (int x = count - 1; x > 0; x--) {
-                    textView2.setText(textView2.getText() + Integer.toString(binary[x]));
-                }
-
+                answer = Double.parseDouble(decimalResult);
                 break;
         }
 
         displayAnswer(answer);
+    }
+
+    private void appendValue(String value) {
+        textView2.append(value);
+        adjustTextSize();
     }
 
     private void displayAnswer(double answer) {

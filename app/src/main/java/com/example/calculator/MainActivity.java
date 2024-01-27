@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MaterialToolbar materialToolbar = findViewById(R.id.material_toolbar);
         setSupportActionBar(materialToolbar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         navigationView.setNavigationItemSelectedListener(MainActivity.this);
 
@@ -47,6 +48,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             navigationView.post(() -> navigationView.getMenu().getItem(0).setChecked(true));
         }
+
+        setupBackButton();
+    }
+
+    private void applySavedTheme() {
+        SharedPreferences preferences = getSharedPreferences(SettingsFragment.PREF_THEME, MODE_PRIVATE);
+        int savedTheme = preferences.getInt(SettingsFragment.KEY_THEME, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+        AppCompatDelegate.setDefaultNightMode(savedTheme);
     }
 
     @Override
@@ -75,20 +85,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+    private void setupBackButton() {
+        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else {
+                    finish();
+                }
+            }
+        };
 
-    private void applySavedTheme() {
-        SharedPreferences preferences = getSharedPreferences(SettingsFragment.PREF_THEME, MODE_PRIVATE);
-        int savedTheme = preferences.getInt(SettingsFragment.KEY_THEME, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-
-        // Apply the saved theme
-        AppCompatDelegate.setDefaultNightMode(savedTheme);
+        getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
     }
 }

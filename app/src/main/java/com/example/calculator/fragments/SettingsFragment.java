@@ -1,7 +1,9 @@
 package com.example.calculator.fragments;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +12,16 @@ import android.widget.CompoundButton;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
-import com.example.calculator.MainActivity;
 import com.example.calculator.R;
 import com.google.android.material.materialswitch.MaterialSwitch;
 
 public class SettingsFragment extends Fragment {
     public static final String PREF_THEME = "theme_pref";
     public static final String KEY_THEME = "theme_key";
-    MaterialSwitch materialSwitch;
 
+    private static final String TAG = "SettingsFragment";
+
+    private MaterialSwitch materialSwitch;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,15 +52,19 @@ public class SettingsFragment extends Fragment {
     }
 
     private void saveTheme(int theme) {
-        SharedPreferences preferences = getActivity().getSharedPreferences(PREF_THEME, getActivity().MODE_PRIVATE);
-        preferences.edit().putInt(KEY_THEME, theme).apply();
+        if (getActivity() != null) {
+            SharedPreferences preferences = getActivity().getSharedPreferences(PREF_THEME, Context.MODE_PRIVATE);
+            preferences.edit().putInt(KEY_THEME, theme).apply();
+        } else {
+            Log.e(TAG, "Fragment not attached to an activity");
+        }
     }
 
     private void updateSwitchText(boolean isDarkMode) {
         if (isDarkMode) {
-            materialSwitch.setText("Dark Mode");
+            materialSwitch.setText(R.string.dark_mode);
         } else {
-            materialSwitch.setText("Light Mode");
+            materialSwitch.setText(R.string.light_mode);
         }
     }
 }
